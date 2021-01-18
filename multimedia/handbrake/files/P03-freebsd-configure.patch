@@ -1,0 +1,11 @@
+--- configure.orig	2020-05-21 15:55:40.000000000 +0000
++++ configure	2020-12-29 00:25:23.411264000 +0000
+@@ -6569,7 +6575,7 @@
+ 
+ if enabled x86; then
+     case $target_os in
+-        mingw32*|mingw64*|win32|win64|linux|cygwin*)
++        freebsd|mingw32*|mingw64*|win32|win64|linux|cygwin*)
+             ;;
+         *)
+             disable ffnvcodec cuvid nvdec nvenc

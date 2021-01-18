@@ -1,4 +1,4 @@
-TIMESTAMP = 1592180378
+TIMESTAMP = 1609198090
 SHA256 (handbrake/fdk-aac-2.0.1.tar.gz) = a4142815d8d52d0e798212a5adea54ecf42bcd4eec8092b37a8cb615ace91dc6
 SIZE (handbrake/fdk-aac-2.0.1.tar.gz) = 2488373
 SHA256 (handbrake/ffmpeg-4.2.3.tar.bz2) = 217eb211c33303b37c5521a5abe1f0140854d6810c6a6ee399456cc96356795e
@@ -11,6 +11,8 @@ SHA256 (handbrake/libdvdread-6.0.2.tar.bz2) = f91401af213b219cdde24b46c50a57f293
 SIZE (handbrake/libdvdread-6.0.2.tar.bz2) = 405298
 SHA256 (handbrake/dav1d-0.5.1.tar.bz2) = 0214d201a338e8418f805b68f9ad277e33d79c18594dee6eaf6dcd74db2674a9
 SIZE (handbrake/dav1d-0.5.1.tar.bz2) = 548584
+SHA256 (handbrake/nv-codec-headers-9.0.18.1.tar.gz) = 6181a5dac66a6990aa3baf10a77ae677f372b9068be9ef73abfd37b73fb4c745
+SIZE (handbrake/nv-codec-headers-9.0.18.1.tar.gz) = 58850
 SHA256 (handbrake/x265_3.2.1.tar.gz) = fb9badcf92364fd3567f8b5aa0e5e952aeea7a39a2b864387cec31e3b58cbbcc
 SIZE (handbrake/x265_3.2.1.tar.gz) = 1426255
 SHA256 (handbrake/HandBrake-HandBrake-1.3.3_GH0.tar.gz) = 4a004666cdf4570385c7e4d8da093f36b4baa86e32bb0814b4d14e267905e3b3

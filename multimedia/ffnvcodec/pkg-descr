@@ -1,0 +1,3 @@
+FFmpeg version of headers required to interface with NVIDIA's codec APIs.
+
+WWW: https://github.com/FFmpeg/nv-codec-headers/

@@ -3,7 +3,7 @@
 
 PORTNAME=	handbrake
 DISTVERSION=	1.3.3
-PORTREVISION=	2
+PORTREVISION=	3
 CATEGORIES=	multimedia
 DIST_SUBDIR=	${PORTNAME}
 
@@ -47,6 +47,7 @@ CONTRIB_FILES=	fdk-aac-2.0.1.tar.gz \
 		libdvdnav-6.0.1.tar.bz2 \
 		libdvdread-6.0.2.tar.bz2 \
 		dav1d-0.5.1.tar.bz2 \
+		nv-codec-headers-9.0.18.1.tar.gz \
 		x265_3.2.1.tar.gz
 
 MASTER_SITES+=	https://github.com/HandBrake/HandBrake-contribs/releases/download/contribs/:contrib
@@ -81,16 +82,17 @@ NOPRECIOUSMAKEVARS=	yes			# for ffmpeg and x264
 # Enforce linking to bundled libraries instead of system libraries
 LDFLAGS+=	-L${BUILD_WRKSRC}/contrib/lib
 
-OPTIONS_DEFINE=		FDK_AAC MFX X11
+OPTIONS_DEFINE=		FDK_AAC MFX NVENC X11
 OPTIONS_DEFAULT=	MFX X11
-OPTIONS_EXCLUDE_powerpc=	MFX
-OPTIONS_EXCLUDE_powerpc64=	MFX
-OPTIONS_EXCLUDE_powerpc64le=	MFX
+OPTIONS_EXCLUDE_powerpc=	MFX NVENC
+OPTIONS_EXCLUDE_powerpc64=	MFX NVENC
+OPTIONS_EXCLUDE_powerpc64le=	MFX NVENC
 
 OPTIONS_SUB=	yes
 
 FDK_AAC_DESC=	Enable non-free Fraunhofer FDK AAC codec
 MFX_DESC=	Intel MediaSDK (aka Quick Sync Video)
+NVENC_DESC=	NVENC encoder
 X11_DESC=	Build GTK+3 based GUI program
 
 FDK_AAC_CONFIGURE_ENABLE=	fdk-aac
@@ -102,6 +104,8 @@ LICENSE_PERMS_FDK_AAC=		dist-mirror pkg-mirror auto-accept
 MFX_LIB_DEPENDS=	libmfx.so:multimedia/intel-media-sdk \
 			libva-drm.so:multimedia/libva
 MFX_CONFIGURE_ON=	--enable-qsv
+
+NVENC_CONFIGURE_ENABLE=	nvenc
 
 X11_CONFIGURE_ENV=	COMPILER_PATH=${LOCALBASE}/bin
 X11_MAKE_ENV=	COMPILER_PATH=${LOCALBASE}/bin
@@ -128,6 +132,7 @@ post-extract: .SILENT
 # for powerpc64.
 # picked from multimedia/ffmpeg/files/patch-libswscale_ppc_swscale__altivec.c
 	${CP} ${FILESDIR}/P02-freebsd-ppc-libswscale.patch ${WRKSRC}/contrib/ffmpeg
+	${CP} ${FILESDIR}/P03-freebsd-configure.patch ${WRKSRC}/contrib/ffmpeg
 
 post-install-X11-on:
 	${LN} -sf ghb ${STAGEDIR}${PREFIX}/bin/HandBrake
